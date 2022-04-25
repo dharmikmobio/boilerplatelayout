@@ -1,14 +1,18 @@
-import '../App.css';
-import React, { Component } from 'react'
-import { Layout, Menu,} from 'antd';
+import "../App.css";
+import React, { Component } from "react";
+import { Layout ,Menu } from "antd";
+import { Typography } from 'antd';
+import { Avatar } from 'antd';
+import { UserOutlined } from '@ant-design/icons';
 import {
   DesktopOutlined,
   PieChartOutlined,
   FileOutlined,
-  TeamOutlined,
-  UserOutlined,
+  TeamOutlined
+  
 } from '@ant-design/icons';
-const { Header, Content, Footer, Sider } = Layout;
+const { Header, Footer, Sider, Content } = Layout;
+const { Title } = Typography;
 
 function getItem(label, key, icon, children) {
   return {
@@ -30,7 +34,6 @@ const items = [
   getItem('Files', '9', <FileOutlined />),
 ];
 
-
 export class Boiler extends Component {
   state = {
     collapsed: false,
@@ -44,30 +47,31 @@ export class Boiler extends Component {
   render() {
     const { collapsed } = this.state;
     return (
-     <>
-           <Layout
+      <>
+        <Layout
         style={{
           minHeight: '100vh',
-        }}
-      >
-        <Sider collapsible collapsed={collapsed} onCollapse={this.onCollapse}>
+        }} className="site-layout" >
+            <Header className="site-layout-background"
+            style={{
+              padding: 0,
+            }}>
+            <Avatar size="large" style={{float:"right",margin:"0.5rem"}} icon={<UserOutlined />} />
+            <Title style={{color:"white",margin:"1rem"}} level={4}>Mobio</Title>
+            </Header>
+            <Layout>
+          
+            <Sider collapsible collapsed={collapsed} onCollapse={this.onCollapse}>
           <div className="logo" />
           <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={items} />
         </Sider>
-        <Layout className="site-layout">
-          <Header
-            className="site-layout-background"
-            style={{
-              padding: 0,
-            }}
-          />
-          <Content
-            style={{
+          <Layout>
+            
+           <Content  style={{
               margin: '0 16px',
-            }}
-          >
-          
-            <div
+            }}>
+
+             <div
               className="site-layout-background"
               style={{
                 padding: 24,
@@ -76,19 +80,19 @@ export class Boiler extends Component {
             >
              Dashboard
             </div>
-          </Content>
-          <Footer
-            style={{
+            </Content>
+            <Footer style={{
               textAlign: 'center',
-            }}
-          >
-            Ant Design ©2018 Created by Ant UED
-          </Footer>
-        </Layout>
-      </Layout>
-     </>
-    )
+            }}>Footer</Footer>
+            </Layout>
+           
+
+            </Layout>
+          </Layout>
+        
+      </>
+    );
   }
 }
 
-export default Boiler
+export default Boiler;
