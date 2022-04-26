@@ -1,98 +1,60 @@
-import "../App.css";
-import React, { Component } from "react";
-import { Layout ,Menu } from "antd";
-import { Typography } from 'antd';
-import { Avatar } from 'antd';
+import React, { Component } from 'react'
+import '../App.css';
+import { Layout, Avatar, Menu, Breadcrumb } from 'antd';
+import Title from 'antd/lib/typography/Title';
+import SubMenu from 'antd/lib/menu/SubMenu';
 import { UserOutlined } from '@ant-design/icons';
-import {
-  DesktopOutlined,
-  PieChartOutlined,
-  FileOutlined,
-  TeamOutlined
-  
-} from '@ant-design/icons';
-const { Header, Footer, Sider, Content } = Layout;
-const { Title } = Typography;
 
-function getItem(label, key, icon, children) {
-  return {
-    key,
-    icon,
-    children,
-    label,
-  };
-}
-const items = [
-  getItem('Option 1', '1', <PieChartOutlined />),
-  getItem('Option 2', '2', <DesktopOutlined />),
-  getItem('User', 'sub1', <UserOutlined />, [
-    getItem('Tom', '3'),
-    getItem('Bill', '4'),
-    getItem('Alex', '5'),
-  ]),
-  getItem('Team', 'sub2', <TeamOutlined />, [getItem('Team 1', '6'), getItem('Team 2', '8')]),
-  getItem('Files', '9', <FileOutlined />),
-];
+const { Header, Footer, Sider, Content } = Layout;
 
 export class Boiler extends Component {
-  state = {
-    collapsed: false,
-  };
-  onCollapse = (collapsed) => {
-    console.log(collapsed);
-    this.setState({
-      collapsed,
-    });
-  };
   render() {
-    const { collapsed } = this.state;
     return (
       <>
-        <Layout
-        style={{
-          minHeight: '100vh',
-        }} className="site-layout" >
-            <Header className="site-layout-background"
-            style={{
-              padding: 0,
-            }}>
-            <Avatar size="large" style={{float:"right",margin:"0.5rem"}} icon={<UserOutlined />} />
-            <Title style={{color:"white",margin:"1rem"}} level={4}>Mobio</Title>
-            </Header>
-            <Layout>
-          
-            <Sider collapsible collapsed={collapsed} onCollapse={this.onCollapse}>
-          <div className="logo" />
-          <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={items} />
-        </Sider>
-          <Layout>
-            
-           <Content  style={{
-              margin: '0 16px',
-            }}>
-
-             <div
-              className="site-layout-background"
-              style={{
-                padding: 24,
-                minHeight: 360,
-              }}
+         <Layout>
+      <Header style={{padding:10}}>
+      
+      <Avatar size="large" style={{float:"right"}} icon={<UserOutlined />} />
+      <Title style={{color:'white'}} level={3}>MOBIO</Title>
+      </Header>
+        <Layout>
+        <Sider>
+          <Menu
+          defaultSelectedKeys={['Dashboard']}
+          mode="inline"
+          >
+            <Menu.Item key='Dashboard'>
+              Dashboard
+            </Menu.Item>
+            <SubMenu
+            title={
+              <span>
+                {/* <Icon type="mail" /> */}
+                <span>About US</span>
+              </span>
+            }
             >
-             Dashboard
-            </div>
-            </Content>
-            <Footer style={{
-              textAlign: 'center',
-            }}>Footer</Footer>
-            </Layout>
-           
-
-            </Layout>
-          </Layout>
-        
+              <Menu.ItemGroup key='AboutUS' title='Country 1'>
+                <Menu.Item key='location1'> Location 1</Menu.Item>
+                <Menu.Item key='location2'> Location 2</Menu.Item>
+              </Menu.ItemGroup>
+            </SubMenu>
+          </Menu>
+        </Sider>
+        <Layout>          
+        <Content style={{ padding: '0 50px' }}>
+      <Breadcrumb style={{ margin: '16px 0' }}>
+        <Breadcrumb.Item>Dashboard</Breadcrumb.Item>
+      </Breadcrumb>
+      <div style={{ background: '#fff', padding: 24, minHeight: 580 }}>Content</div>
+    </Content>
+    <Footer style={{ textAlign: 'center' }}>Ant Design Layout </Footer>
+        </Layout>
+      </Layout>    
+    </Layout>
       </>
-    );
+    )
   }
 }
 
-export default Boiler;
+export default Boiler
