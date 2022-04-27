@@ -19,8 +19,8 @@ const Test = () => {
   return (
     <>
         <Boiler>
-            <h1>React 18</h1>
-            <button onClick={updateAll}>Update All </button>
+            <h1 className='new'>React 18</h1>
+            <button className='btn' onClick={updateAll}>Update All </button>
             
         </Boiler>
     </>
