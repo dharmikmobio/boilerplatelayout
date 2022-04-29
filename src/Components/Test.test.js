@@ -41,10 +41,33 @@ describe("shallow test page",()=>{
         expect(wrapper).toMatchSnapshot();
     })
 
-   
+    it('function check in function component',()=>{
+        const wrapper = shallow(<Test/>);
+        wrapper.find(".btn").simulate("click");
+        // console.log(wrapper.find('.new2').text());
+        expect(wrapper.find('.new2').text()).toBe("React new version")
+    })
 
-  
+    it('gender state by click function',()=>{
+        const wrapper = shallow(<Test/>);
+        const btn = wrapper.find("button").last();
+
+        btn.simulate('click',{
+            target:{
+                getAttribute:function(){
+                    return btn.props()['data-gender']
+                }
+            }
+        })
+        expect(wrapper.find('.box.female').length).toEqual(1);
+        
+    })
+
+
+
 })
+
+
 
 
 

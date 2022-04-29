@@ -38,7 +38,7 @@ describe("shallow Blog page",()=>{
         expect(wrapper.is(".container")).toBe(true);
     })
 
-    // it('function  check',()=>{
+    // it('function  check class components',()=>{
     //     let wrapper = shallow(<Blog/>);
     //    let anyfn = wrapper.instance().updateAll();
     //    console.log(anyfn);
@@ -52,5 +52,16 @@ describe("shallow Blog page",()=>{
 //     })
 //  })
 
-
+//    beforeAll(() => {
+//     console.log("********* before all ************);
+//     });
+//     afterAll(() => {
+//     console.log("********* after all ************ );
+//     });
+//     beforeEach(() => {
+//     console.log("********* before each *************);
+//     });
+//     afterEach(() => {
+//     console.log("********* after each ***********");
+//     });
 
