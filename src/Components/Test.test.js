@@ -4,6 +4,7 @@ import Test from './Test';
 import { shallow } from 'enzyme';
 
 
+
 describe("shallow test page",()=>{
     it('Object check',()=>{
         let wrapper = shallow(<Test/>);
@@ -30,10 +31,45 @@ describe("shallow test page",()=>{
         expect(wrapper.containsAllMatchingElements([<h1>React 18</h1>])).toEqual(true);
     })
 
-    it('Any msj check',()=>{
+    it('find check',()=>{
         let wrapper = shallow(<Test/>);
-        expect(wrapper.containsAnyMatchingElements([<h1>React 18</h1>,<h1>React 10</h1>])).toEqual(true);
+        expect(wrapper.find('.new').length).toBe(1);
     })
+
+    it('snapshot 1 check',()=>{
+        let wrapper = shallow(<Test/>);
+        expect(wrapper).toMatchSnapshot();
+    })
+
+    it('function check in function component',()=>{
+        const wrapper = shallow(<Test/>);
+        wrapper.find(".btn").simulate("click");
+        // console.log(wrapper.find('.new2').text());
+        expect(wrapper.find('.new2').text()).toBe("React new version")
+    })
+
+    it('gender state by click function',()=>{
+        const wrapper = shallow(<Test/>);
+        const btn = wrapper.find("button").last();
+
+        btn.simulate('click',{
+            target:{
+                getAttribute:function(){
+                    return btn.props()['data-gender']
+                }
+            }
+        })
+        expect(wrapper.find('.box.female').length).toEqual(1);
+        
+    })
+
+
+
 })
+
+
+
+
+
 
 

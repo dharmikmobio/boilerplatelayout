@@ -2,6 +2,7 @@ import React from 'react';
 import Blog from './Blog';
 
 import { shallow } from 'enzyme';
+// import { mount } from 'enzyme';
 
 
 describe("shallow Blog page",()=>{
@@ -36,6 +37,31 @@ describe("shallow Blog page",()=>{
         let wrapper = shallow(<Blog/>);
         expect(wrapper.is(".container")).toBe(true);
     })
+
+    // it('function  check class components',()=>{
+    //     let wrapper = shallow(<Blog/>);
+    //    let anyfn = wrapper.instance().updateAll();
+    //    console.log(anyfn);
+    // })
 })
 
+// describe('mount vs shallow', () => { 
+//     it('mount check',()=>{
+//         let wrapper = mount(<Blog/>);
+//         console.log(wrapper)
+//     })
+//  })
+
+//    beforeAll(() => {
+//     console.log("********* before all ************);
+//     });
+//     afterAll(() => {
+//     console.log("********* after all ************ );
+//     });
+//     beforeEach(() => {
+//     console.log("********* before each *************);
+//     });
+//     afterEach(() => {
+//     console.log("********* after each ***********");
+//     });
 

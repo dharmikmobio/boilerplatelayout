@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`shallow test page snapshot 1 check 1`] = `
+<Fragment>
+  <Boiler>
+    <h1
+      className="new"
+    >
+      React 18
+    </h1>
+    <p
+      className="new2"
+    >
+      React 18
+    </p>
+    <button
+      className="btn"
+      onClick={[Function]}
+    >
+      Update All 
+    </button>
+    <button
+      data-gender="male"
+      onClick={[Function]}
+    >
+      Male 
+    </button>
+    <button
+      data-gender="female"
+      onClick={[Function]}
+    >
+      Female 
+    </button>
+    <br />
+    <div
+      className="box male"
+      style={
+        Object {
+          "margin": "10px",
+        }
+      }
+    >
+      select
+      male
+    </div>
+  </Boiler>
+</Fragment>
+`;
